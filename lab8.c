@@ -23,12 +23,14 @@ int main()
         printf("Error opening file!\n");
         return 1;
     }
-    while (!feof(file))
+    char buffer[150];
+    char *ptr = buffer;
+    while (fgets(buffer, 150, file) != NULL)
+    // while (!feof(file))
     {
-        for (int i = 0; i < 10; i++)
-        {
-            fscanf(file, "%f", &numbers[i]);
-        }
+
+        sscanf(buffer, "%f %f %f %f %f %f %f %f %f %f", &numbers[0], &numbers[1], &numbers[2],
+               &numbers[3], &numbers[4], &numbers[5], &numbers[6], &numbers[7], &numbers[8], &numbers[9]);
         pid = fork();
 
         if (pid == 0)
